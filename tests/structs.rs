@@ -18,6 +18,7 @@ struct Quux(usize, isize);
 #[display(fmt = "xyzzy")]
 struct Xyzzy;
 
+#[test]
 fn main() {
     assert_eq!(
         Baz { foo: 42, bar: true }.to_string(),

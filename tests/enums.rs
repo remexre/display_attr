@@ -26,6 +26,7 @@ enum Foo {
     Quux { xyzzy: &'static str, tl: Box<Foo> },
 }
 
+#[test]
 fn main() {
     assert_eq!(Just::Value(0).to_string(), "0");
     assert_eq!(Foo::Bar.to_string(), "bar");

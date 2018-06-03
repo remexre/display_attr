@@ -121,6 +121,24 @@ impl DisplayAttribute {
                             path.into_token_stream()
                         )
                     }
+                } else if meta.ident == "arg" {
+                    if let Lit::Str(lit) = meta.lit {
+                        match lit.parse() {
+                            Ok(expr) => args.push(expr),
+                            Err(err) => panic!(
+                                "Invalid #[display(...)] attribute on {}: When parsing argument \
+                                 string: {}",
+                                path.into_token_stream(),
+                                err,
+                            ),
+                        }
+                    } else {
+                        panic!(
+                            "Invalid #[display(...)] attribute on {}: Argument is not a format \
+                             string, where bounds declaration, field name, or expression",
+                            path.into_token_stream(),
+                        )
+                    }
                 } else {
                     panic!(
                         "Invalid #[display(...)] attribute on {}: Invalid named meta item",

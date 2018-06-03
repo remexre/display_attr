@@ -17,6 +17,7 @@ enum Ast {
     Neg(Box<Ast>),
 }
 
+#[test]
 fn main() {
     let ast = Ast::Add(
         Box::new(Ast::Const(4)),
