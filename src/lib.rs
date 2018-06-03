@@ -4,6 +4,27 @@
 //! [![Crates.io](https://img.shields.io/crates/v/display_attr.svg)](https://crates.io/crates/display_attr)
 //! [![Documentation](https://docs.rs/display_attr/badge.svg)](https://docs.rs/display_attr/*/display_attr/)
 //! ![License](https://img.shields.io/crates/l/display_attr.svg)
+//!
+//! ## Example:
+//!
+//! ```
+//! #[macro_use]
+//! extern crate display_attr;
+//!
+//! #[derive(DisplayAttr)]
+//! #[display(fmt = "{} ({})", name, age)]
+//! struct Person {
+//!     name: String,
+//!     age: usize,
+//! }
+//!
+//! fn main() {
+//!     assert_eq!(Person {
+//!         name: "Mary".to_string(),
+//!         age: 23,
+//!     }.to_string(), "Mary (23)");
+//! }
+//! ```
 
 extern crate proc_macro;
 extern crate proc_macro2;

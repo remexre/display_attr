@@ -70,13 +70,10 @@ impl DisplayAttribute {
                     None
                 }
             }
-            Meta::NameValue(ref meta) if meta.ident == "display" => {
-                // TODO: Implement
-                panic!(
-                    "Invalid #[display = ...] attribute on {}: Not a meta list",
-                    path.into_token_stream()
-                )
-            }
+            Meta::NameValue(ref meta) if meta.ident == "display" => panic!(
+                "Invalid #[display = ...] attribute on {}: Not a meta list",
+                path.into_token_stream()
+            ),
             Meta::Word(ref meta) if meta == "display" => panic!(
                 "Invalid #[display] attribute on {}: Not a meta list",
                 path.into_token_stream()
